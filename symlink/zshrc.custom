@@ -41,6 +41,9 @@ export ZENDESK_PROVISIONING_PATH=~/Code/zendesk/zendesk_provisioning
 export ZENDESK_HOST=zendesk.dev
 #export ZENDESK_PORT=80
 
+# VPN
+alias global-off='sudo mv /Applications/GlobalProtect{,OFF}.app && pkill -9 -f GlobalProtect'
+alias global-on='sudo mv /Applications/GlobalProtect{OFF,}.app'
 
 # INITIALIZATION
 # ********************************************************
