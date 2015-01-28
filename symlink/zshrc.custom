@@ -2,15 +2,16 @@
 # ********************************************************
 
 alias bower='noglob bower'
-alias mysql="mysql -uroot"
-alias reload!="source ~/.zshrc"
-alias restart!="touch ./tmp/restart.txt"
-alias tidy_git="git branch --merged | grep -v master | xargs git branch -d"
+alias mysql='mysql -uroot'
+alias reload!='source ~/.zshrc'
+alias restart!='touch ./tmp/restart.txt'
+alias tidy_git='git branch --merged | grep -v master | xargs git branch -d'
 alias update='git stash && git pull && bundle install && git stash pop && restart!'
 alias vim='mvim -v'
 alias watch='tail -f log/development.log'
-alias nody="node ~/Dropbox/Dev/server.js"
+alias nody='node ~/Dropbox/Dev/server.js'
 alias nom='rm -rf node_modules && npm cache clear && npm i'
+alias burp='java -Xmx1024m -jar ~/Downloads/burpsuite_free_v1.6.jar &'
 
 export EDITOR='vim .'
 
