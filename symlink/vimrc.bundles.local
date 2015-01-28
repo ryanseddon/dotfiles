@@ -1,7 +1,5 @@
 Bundle "mattn/emmet-vim"
 Bundle "editorconfig/editorconfig-vim"
 Bundle "ap/vim-css-color"
-Bundle "Lokaltog/powerline"
 Bundle "mxw/vim-jsx"
-Bundle "christoomey/vim-tmux-navigator"
 Bundle "nerdtree-ack"
