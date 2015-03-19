@@ -1,5 +1,5 @@
 Bundle "mattn/emmet-vim"
 Bundle "editorconfig/editorconfig-vim"
-Bundle "ap/vim-css-color"
+Bundle "skammer/vim-css-color"
 Bundle "mxw/vim-jsx"
 Bundle "nerdtree-ack"
