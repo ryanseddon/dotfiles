@@ -1,0 +1,10 @@
+windows:
+  - name: Embeddable Framework
+    root: ~/Code/zendesk/embeddable_framework
+    layout: tiled
+    panes:
+      - commands:
+          - vim .
+        focus: true
+      - gulp watch
+      - git st
