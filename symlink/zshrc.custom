@@ -15,6 +15,11 @@ alias burp='java -Xmx1024m -jar ~/Downloads/burpsuite_free_v1.6.jar &'
 
 export EDITOR='vim .'
 
+# GIT
+# ********************************************************
+
+alias git-clean="git branch --merged | grep -v '^*'| awk '{print $1}' | xargs git branch -d"
+
 # RUBY
 # ********************************************************
 
@@ -37,20 +42,20 @@ export ZENDESK_APPS_TOOLS_PATH=~/Code/zendesk/zendesk_apps_tools
 export ZENDESK_CARSON_PATH=~/Code/zendesk/zendesk_carson
 export ZENDESK_CLASSIC_PATH=~/Code/zendesk/zendesk
 export ZENDESK_PROVISIONING_PATH=~/Code/zendesk/zendesk_provisioning
-
-# Server configuration
-export ZENDESK_HOST=zendesk.dev
-#export ZENDESK_PORT=80
+export MYSQL_URL=mysql://root@127.0.0.1:3306/zendesk_development
 
 # VPN
 alias global-off='sudo mv /Applications/GlobalProtect{,OFF}.app && pkill -9 -f GlobalProtect'
 alias global-on='sudo mv /Applications/GlobalProtect{OFF,}.app'
 
+# Hibernation mode
+alias hibernateon="sudo pmset -a hibernatemode 25 force"
+alias hibernateoff="sudo pmset -a hibernatemode 0"
+alias hibernate="hibernateon && sudo shutdown -s now"
+
 # INITIALIZATION
 # ********************************************************
 
-# Boxen
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 source ~/.nvm/nvm.sh
 
 # autojump
@@ -76,8 +81,3 @@ eval "$(rbenv init -)"
 
 # init z   https://github.com/rupa/z
 . ~/Code/personal/z/z.sh
-
-# Base16 Shell
-#BASE16_SCHEME="ocean"
-#BASE16_SHELL="$BOXEN_SRC_DIR/other/base16-shell/base16-$BASE16_SCHEME.dark.sh"
-#[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
