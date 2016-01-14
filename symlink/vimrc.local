@@ -34,3 +34,6 @@ set foldlevel=1         "this is just what i use
 
 " JSX for normal js
 let g:jsx_ext_required = 0
+
+" Ignore folders for ctrlp
+set wildignore+=*/node_modules/*,*.swp
