@@ -1,4 +1,3 @@
-Bundle "mattn/emmet-vim"
 Bundle "editorconfig/editorconfig-vim"
 Bundle "skammer/vim-css-color"
 Bundle "mxw/vim-jsx"

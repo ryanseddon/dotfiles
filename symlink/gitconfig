@@ -68,7 +68,6 @@
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
-	tool = kdiff3
 
 # URL shorthands
 [url "git@github.com:"]
@@ -85,22 +84,16 @@
 	insteadOf = "gist:"
 
 [push]
-  default = upstream
-
-[push]
-  default = upstream
+  default = simple
 
 [branch]
   autosetuprebase = always
-
-[credential]
-  helper = /opt/boxen/bin/boxen-git-credential
 
 [hub]
   protocol = https
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 
 [mergetool "kdiff3"]
 	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3

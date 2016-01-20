@@ -53,7 +53,7 @@ local defaultLayout = {
   SourceTree = { laptopScreen, fullScreen },
   Slack = { laptopScreen, fullScreen },
   iTerm = { laptopScreen, fullScreen },
-  ["Sublime Text"] = { laptopScreen, fullScreen },
+  MacVim = { laptopScreen, fullScreen },
   Firefox = { laptopScreen, fullScreen },
   ["Google Chrome"] = { laptopScreen, fullScreen },
   Spotify = { laptopScreen, middleScreen },
@@ -80,7 +80,7 @@ local twoMonitorDefault = {
   SourceTree = { laptopScreen, middleScreen },
   Slack = { workScreen, rightHalf },
   iTerm = { workScreen, leftHalf },
-  ["Sublime Text"] = { laptopScreen, middleScreen },
+  MacVim = { laptopScreen, middleScreen },
 
   Firefox = { laptopScreen, fullScreen },
   ["Google Chrome"] = { workScreen, rightHalf }
@@ -97,8 +97,8 @@ currentLayout = defaultLayout
 local layouts = {
   -- +69732352 = laptop
   -- +69501409 = thunderbolt work
-  [ "+69732352" ]          = defaultLayout,
-  [ "+69732352+69501409" ] = workLayout,
+  [ "+69732992" ]          = defaultLayout,
+  [ "+69732992+69501409" ] = workLayout,
   [ "+69503729" ]          = homeLayout
 }
 
@@ -165,8 +165,8 @@ function applyPlace(win, place)
   hs.grid.set(win, place[2], hs.screen:allScreens()[place[1]])
 end
 
-function modifyWifi(identifier) 
-  if identifier == "+69732352+69501409" then
+function modifyWifi(identifier)
+  if identifier == "+69732992+69501409" then
   	hs.applescript('do shell script "networksetup -setairportpower en1 off"')
   else
   	hs.applescript('do shell script "networksetup -setairportpower en1 on"')
