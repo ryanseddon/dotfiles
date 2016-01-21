@@ -10,6 +10,15 @@ inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+" horizontal shrink
+nnoremap <silent> ,= :exe "resize " . (winheight(0) * 3/2)<CR>
+" horizontal expand
+nnoremap <silent> ,- :exe "resize " . (winheight(0) * 2/3)<CR>
+" vertical shrink
+nnoremap <silent> \= :exe "vertical resize" . (winwidth(0) * 3/2)<CR>
+" vertical expand
+nnoremap <silent> \- :exe "vertical resize" . (winwidth(0) * 2/3)<CR>
+
 " ctrlp buffer only
 nnoremap <leader>b :CtrlPBuffer<CR>
 
