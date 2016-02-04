@@ -167,9 +167,9 @@ end
 
 function modifyWifi(identifier)
   if identifier == "+69732992+69501409" then
-  	hs.applescript('do shell script "networksetup -setairportpower en1 off"')
+    hs.applescript('do shell script "networksetup -setairportpower en1 off"')
   else
-  	hs.applescript('do shell script "networksetup -setairportpower en1 on"')
+    hs.applescript('do shell script "networksetup -setairportpower en1 on"')
   end
 
 end
@@ -198,9 +198,9 @@ function setupAutoReload()
   -- hs.alert.show("Setting up auto reload")
   hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
   hs.alert.show("Config reloaded")
-  --hs.hotkey.bind(hyper, '\\', function()
-  --  reloadConfig()
-  --end)
+  hs.hotkey.bind(hyper, 'delete', function()
+    reloadConfig()
+  end)
 end
 
 function startAppWatcher()
