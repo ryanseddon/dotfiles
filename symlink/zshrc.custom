@@ -11,7 +11,7 @@ alias vim='mvim -v'
 alias watch='tail -f log/development.log'
 alias nody='node ~/Dropbox/Dev/server.js'
 alias nom='rm -rf node_modules && npm cache clear && npm i'
-alias burp='java -Xmx1024m -jar ~/Downloads/burpsuite_free_v1.6.jar &'
+alias burp='java -Xmx1024m -jar ~/Downloads/burpsuite_free_v1.6.32.jar &'
 
 export EDITOR='vim .'
 

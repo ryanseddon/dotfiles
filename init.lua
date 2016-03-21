@@ -210,7 +210,7 @@ end
 
 function startScreenWatcher()
   -- hs.alert.show("Setting up screen watcher")
-  hs.screen.watcher.new(screenWatcher):start()
+  screenwatcher = hs.screen.watcher.new(screenWatcher):start()
 end
 
 function sleepComp()
