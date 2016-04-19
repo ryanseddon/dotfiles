@@ -162,7 +162,7 @@ local gridset = function(frame)
 end
 
 function applyPlace(win, place)
-  hs.grid.set(win, place[2], hs.screen:allScreens()[place[1]])
+  hs.grid.set(win, place[2], hs.screen.allScreens()[place[1]])
 end
 
 function modifyWifi(identifier)
