@@ -52,7 +52,7 @@ local defaultLayout = {
   Evernote = { laptopScreen, fullScreen },
   SourceTree = { laptopScreen, fullScreen },
   Slack = { laptopScreen, fullScreen },
-  iTerm = { laptopScreen, fullScreen },
+  iTerm2 = { laptopScreen, fullScreen },
   MacVim = { laptopScreen, fullScreen },
   Firefox = { laptopScreen, fullScreen },
   ["Google Chrome"] = { laptopScreen, fullScreen },
@@ -64,7 +64,7 @@ local homeLayout = {
   Evernote = { workScreen, middleScreen },
   SourceTree = { workScreen, middleScreen },
   Slack = { workScreen, middleScreen },
-  iTerm = { workScreen, leftHalf },
+  iTerm2 = { workScreen, leftHalf },
   ["Sublime Text"] = { workScreen, middleScreen },
   Firefox = { workScreen, middleScreen },
   ["Google Chrome"] = { workScreen, rightHalf },
@@ -79,7 +79,7 @@ local twoMonitorDefault = {
 
   SourceTree = { laptopScreen, middleScreen },
   Slack = { workScreen, rightHalf },
-  iTerm = { workScreen, leftHalf },
+  iTerm2 = { workScreen, leftHalf },
   MacVim = { laptopScreen, middleScreen },
 
   Firefox = { laptopScreen, fullScreen },
@@ -98,7 +98,7 @@ local layouts = {
   -- +69732352 = laptop
   -- +69501409 = thunderbolt work
   [ "+69732992" ]          = defaultLayout,
-  [ "+69732992+69501409" ] = workLayout,
+  [ "+69732992+69508013" ] = workLayout,
   [ "+69503729" ]          = homeLayout
 }
 
@@ -166,7 +166,7 @@ function applyPlace(win, place)
 end
 
 function modifyWifi(identifier)
-  if identifier == "+69732992+69501409" then
+  if identifier == "+69732992+69508013" then
     hs.applescript('do shell script "networksetup -setairportpower en1 off"')
   else
     hs.applescript('do shell script "networksetup -setairportpower en1 on"')
