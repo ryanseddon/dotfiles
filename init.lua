@@ -98,7 +98,7 @@ local layouts = {
   -- +69732352 = laptop
   -- +69501409 = thunderbolt work
   [ "+69732992" ]          = defaultLayout,
-  [ "+69732992+69507881" ] = workLayout,
+  [ "+69732992+69507833" ] = workLayout,
   [ "+69503729" ]          = homeLayout
 }
 
@@ -139,6 +139,44 @@ function applicationWatcher(appName, eventType, appObject)
   end
 end
 
+function connectToVPN()
+	hs.applescript([[
+		ignoring application responses
+			tell application "System Events" to tell process "GlobalProtect"
+				click menu bar item 1 of menu bar 2
+			end tell
+		end ignoring
+		--do shell script "killall System\\ Events"
+		--delay 0.1
+		tell application "System Events" to tell process "GlobalProtect"
+			tell menu bar item 1 of menu bar 2
+				if exists menu item "Connect to" of menu 1
+					tell menu item "Connect to" of menu 1
+						click
+						click menu item "APAC" of menu 1
+					end tell
+				end if
+			end tell
+		end tell
+	]])
+end
+
+function caffeinateCallback(e)
+	if e == hs.caffeinate.watcher.screensDidUnlock then
+		connectToVPN()
+	end
+end
+
+function wifiChanged()
+	print('wifi change callback')
+	connectToVPN()
+end
+
+hs.hotkey.bind(hyper, "V", function()
+	print('connecting to VPN')
+	connectToVPN()
+end)
+
 function screenWatcher()
   local identifier = ""
   for _, curScreen in pairs(hs.screen.allScreens()) do
@@ -166,12 +204,11 @@ function applyPlace(win, place)
 end
 
 function modifyWifi(identifier)
-  if identifier == "+69732992+69507881" then
+  if identifier == "+69732992+69507833" then
     hs.applescript('do shell script "networksetup -setairportpower en1 off"')
   else
     hs.applescript('do shell script "networksetup -setairportpower en1 on"')
   end
-
 end
 
 function applyLayout(layout)
@@ -184,13 +221,6 @@ function applyLayout(layout)
         applyPlace(win, place)
       end
     end
-  end
-end
-
-function createHotkeys()
-  -- hs.alert.show("Setting up hotkeys")
-  for key, fun in pairs(hotKeyDefinitions) do
-    hs.hotkey.new(hyper, key, fun):enable()
   end
 end
 
@@ -213,9 +243,12 @@ function startScreenWatcher()
   screenwatcher = hs.screen.watcher.new(screenWatcher):start()
 end
 
-function sleepComp()
-  hs.alert.show("Sleep")
-  hs.caffeinate.systemSleep()
+function startCaffienateWatcher()
+	caffeinatewatcher = hs.caffeinate.watcher.new(caffeinateCallback):start()
+end
+
+function startWifiWatcher()
+	wifiwatcher = hs.wifi.watcher.new(wifiChanged):start()
 end
 
 -- URL director
@@ -232,10 +265,7 @@ hs.urlevent.httpCallback = function(scheme, host, params, fullURL)
 		end)
     local numHandlers = #browsers
 		print(numHandlers)
-    local modalKeys = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
-                       "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P",
-                       "A", "S", "D", "F", "G", "H", "J", "K", "L",
-                       "Z", "X", "C", "V", "B", "N", "M"}
+    local modalKeys = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
 
     local boxBorder = 10
     local iconSize = 72
@@ -299,7 +329,6 @@ hs.urlevent.setDefaultHandler('http')
 startScreenWatcher()
 screenWatcher()
 startAppWatcher()
---createHotkeys()
+startCaffienateWatcher()
+startWifiWatcher()
 setupAutoReload()
-
---hs.hotkey.bind({"cmd", "alt", "ctrl"}, 'S', sleepComp)
